@@ -11,25 +11,27 @@ As such, I decided to analyse my personal YouTube watch history from Jan 2023 to
 
 
 ## Questions
-1. How did my viewing habits change over different periods of the year?
-2. Which hours of the day did I spend the most time watching YouTube videos?
+**1. How did my viewing habits change over different periods of the year?**
+**2. Which hours of the day did I spend the most time watching YouTube videos?**
 
 
 ## Hypotheses
-1. I (hopefully) tend to watch fewer videos around exam periods. I have also recently downloaded a mobile app to limit my screen time (since Jan 2024), so this may have subsequently helped to reduce my video consumption.
+1. I hypothesized that exam periods and the introduction of a screen time control app (since Jan 2024) might have influenced a decrease in video consumption.
 2. As a night owl, I typically watch more YouTube videos in the evenings and at night.
 
 
-## Pre-processing
+## Pre-processing (Python)
 1. Removed watched ads.
 2. Filtered out data from before Jan 2023.
-3. Modified timestamps to accurately represent the times of day depending on my geographical location.
+3. Adjusted timestamps to accurately represent the times of day depending on my geographical location.
 4. String manipulation to clean video titles and extract channel names.
-5. Converted to CSV.
+5. Converted from JSON to CSV.
 
 
-## Data Analysis
-Python was used to programatically upload the data to an Amazon Web Services (AWS) S3 bucket. Next, I used AWS Athena to perform exploratory data analysis with SQL queries. Finally I used Tableau to build an interactive dashboard that would allow me to easily answer the questions posed above. Here are the results:
+## Data Analysis (SQL and Tableau)
+Python was used to programmatically upload the data to an Amazon Web Services (AWS) S3 bucket. Next, I used AWS Athena to perform exploratory data analysis with SQL queries. Finally, I used Tableau to build an interactive dashboard that would allow me to easily answer the questions posed above. 
+
+Here are the results:
 
 1. How did my viewing habits change over different periods of the year?
    
@@ -39,13 +41,13 @@ The 20-day moving average of videos watched line graph showed dips in the number
 
 ![](https://github.com/Dillonwong12/YouTube_Watch_History_Analysis/blob/main/images/1_month_moving_avg.png)
 
-Similarly, the monthly average graph of videos watched displayed the same pattern, albeit with less granularity.
+The monthly average graph displayed a similar pattern.
 
 ![](https://github.com/Dillonwong12/YouTube_Watch_History_Analysis/blob/main/images/20_day_moving_avg_Jan_2023.png)
 
 ![](https://github.com/Dillonwong12/YouTube_Watch_History_Analysis/blob/main/images/20_day_moving_avg_Jan_2024.png)
 
-Interestingly, when comparing the 20-Day moving average graphs of videos watched between Jan 2023 and Jan 2024 (I had installed the screen time control app at the beginning of 2024), I found that I had watched about 200 fewer videos in Jan 2024 than I had in Jan 2023. This seems to show that the app is working to reduce my mindless consumption, but I'll need to collect more data to gain stronger evidence of its efficacy.
+Interestingly, the 20-day moving average comparison between Jan 2023 and Jan 2024 showed a reduction of about 200 videos in Jan 2024, suggesting the effectiveness of the screen time control app, but I'll need to collect more data to gain stronger evidence.
 
 2. Which hours of the day did I spend the most time watching YouTube videos?
 
@@ -55,5 +57,5 @@ There was a distinct drop in the average number of YouTube videos I watched arou
 
 
 ## Limitations
-1. Google Takeout does not provide video duration, so simply analysing video counts may not be the most accurate representation of consumption habits.
-2. As previously mentioned, I also listen to music on YouTube while working. Thus, it is difficult to separate "non-productive" consumption vs. "productive" consumption.
+1. Google Takeout does not provide video duration, so simply analysing video counts may not yield the most accurate representation of consumption habits.
+2. As previously mentioned, I also listen to music on YouTube while working. Thus, separating "non-productive" consumption vs. "productive" consumption would introduce another layer of complexity to the analysis.
