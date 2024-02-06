@@ -12,6 +12,7 @@ As such, I decided to analyse my personal YouTube watch history from Jan 2023 to
 
 ## Questions
 **1. How did my viewing habits change over different periods of the year?**
+
 **2. Which hours of the day did I spend the most time watching YouTube videos?**
 
 
